@@ -41,33 +41,4 @@ app.get("/v1/get_icd_11_by_id", async (req: Request, res: Response) => {
   return res.status(400).json({ message: `No Code Found for id of ${id}` });
 });
 
-// type RowData = { id: number; code: string; title: string };
-
-// app.get("/v1/getCodes", async (_, res: Response) => {
-//   const file = "./assets/11To10MapToOneCategory.xlsx";
-
-//   console.time();
-//   const result = readXlsxFile(file);
-//   console.timeEnd();
-//   console.log(result.length);
-//   res.status(200).json(result);
-// });
-
-// function readXlsxFile(file: string): RowData[] {
-//   const workbook = xlsx.readFile(file);
-//   const sheetName = workbook.SheetNames[0];
-//   const sheet = workbook.Sheets[sheetName];
-//   const data = xlsx.utils.sheet_to_json(sheet, { header: 1 }) as any;
-//   const result: RowData[] = [];
-//   for (let i = 1; i < data.length; i++) {
-//     const row = data[i];
-//     result.push({
-//       id: row[0],
-//       code: row[1],
-//       title: row[3],
-//     });
-//   }
-//   return result;
-// }
-
 app.listen(process.env.PORT || 42069, () => console.log("Server started"));
