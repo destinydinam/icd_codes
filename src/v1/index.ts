@@ -1,6 +1,6 @@
 import express, { Request, Response } from "express";
 import cors from "cors";
-import { icd_11 } from "./models/icd_11";
+import { icd_11 } from "../models/icd_11";
 
 const app = express();
 app.use(cors());
