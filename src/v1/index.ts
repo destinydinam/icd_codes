@@ -5,7 +5,7 @@ import { icd_11 } from "../models/icd_11";
 const app = express();
 app.use(cors());
 
-const base_url = "https://us-zipcodes.onrender.com";
+const base_url = "https://icd-codes.onrender.com";
 
 app.get("/v1/get_icd_11", async (req: Request, res: Response) => {
   const req_url = new URL(base_url + req.url);
