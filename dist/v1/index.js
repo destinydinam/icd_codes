@@ -17,7 +17,7 @@ const cors_1 = __importDefault(require("cors"));
 const icd_11_1 = require("../models/icd_11");
 const app = (0, express_1.default)();
 app.use((0, cors_1.default)());
-const base_url = "https://us-zipcodes.onrender.com";
+const base_url = "https://icd-codes.onrender.com";
 app.get("/v1/get_icd_11", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     var _a, _b;
     const req_url = new URL(base_url + req.url);
@@ -26,9 +26,10 @@ app.get("/v1/get_icd_11", (req, res) => __awaiter(void 0, void 0, void 0, functi
     const page = Number((_b = params[0]) === null || _b === void 0 ? void 0 : _b.page) || 1;
     const NUM_P_PAGE = 100;
     const LIMIT = page * NUM_P_PAGE;
-    res
-        .status(200)
-        .json(icd_11_1.icd_11.slice(page === 1 ? 0 : LIMIT - NUM_P_PAGE, LIMIT));
+    res.status(200).json({
+        data: icd_11_1.icd_11.slice(page === 1 ? 0 : LIMIT - NUM_P_PAGE, LIMIT),
+        total: icd_11_1.icd_11.length,
+    });
 }));
 app.get("/v1/get_icd_11_by_id", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     var _c;

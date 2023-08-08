@@ -16,10 +16,10 @@ app.get("/v1/get_icd_11", async (req: Request, res: Response) => {
 
   const NUM_P_PAGE = 100;
   const LIMIT = page * NUM_P_PAGE;
-
-  res
-    .status(200)
-    .json(icd_11.slice(page === 1 ? 0 : LIMIT - NUM_P_PAGE, LIMIT));
+  res.status(200).json({
+    data: icd_11.slice(page === 1 ? 0 : LIMIT - NUM_P_PAGE, LIMIT),
+    total: icd_11.length,
+  });
 });
 
 app.get("/v1/get_icd_11_by_id", async (req: Request, res: Response) => {
